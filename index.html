@@ -89,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </a>
     <!-- Le bouton pour aller vers la deuxième page -->
     <a href="index2.html">
-        <button>Voir la deuxième page</button>
+       <button id="nextPageButton">Voir la deuxième page</button>
     </a>
       <!-- Bloc 1 -->
     <div class="bloc-bloc-1">
@@ -140,5 +140,27 @@ window.onload = function() {
     });
 };
 </script>    
+<script>
+document.getElementById('nextPageButton').addEventListener('click', function() {
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+            transaction_id: "T_12345",
+            price: 3556,
+            items: [{
+                item_id: "20",
+                item_name: "INTENSIVE Adult Camp",
+                item_category: "package",
+                price: 1079,
+                currency: "€",
+                quantity: 1,
+                starting_date: "2024-11-11",
+                ending_date: "2024-11-15"
+            }]
+        }
+    });
+});
+</script>
 </body>
 </html>
