@@ -146,23 +146,25 @@ window.onload = function() {
 </script>    
 <script>
 document.getElementById('nextPageButton').addEventListener('click', function() {
-    dataLayer.push({ ecommerce: null });
-    dataLayer.push({
-        event: "purchase",
-        ecommerce: {
-            transaction_id: "T_12345",
-            price: 3556,
-            items: [{
-                item_id: "20",
-                item_name: "INTENSIVE Adult Camp",
-                item_category: "package",
-                price: 1079,
-                currency: "€",
-                quantity: 1,
-                starting_date: "2024-11-11",
-                ending_date: "2024-11-15"
-            }]
-        }
+   dataLayer.push({ ecommerce: null });  
+dataLayer.push({
+  event: "purchase",
+  ecommerce: {
+    transaction_id: "T_12345",
+    value: 3556,
+    // somme des prix de tous les items 
+    items: [
+    {
+      item_id: "20",
+      item_name: "INTENSIVE Adult Camp",
+      item_category: "package",
+      price: 1079,
+      currency: "€",
+      quantity: 2,
+      starting_date: "2024-11-11",
+      ending_date: "2024-11-15"
+      },]
+     }
     });
 });
 </script>
