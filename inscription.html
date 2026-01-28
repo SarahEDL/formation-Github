@@ -1,15 +1,31 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id=GTM-MHHKNM6'+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MHHKNM6');</script>
-<!-- End Google Tag Manager -->
-  <h1>Inscription</h1>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inscription</title>
 
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MHHKNM6');
+  </script>
+  <!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHHKNM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <h1>Inscription</h1>
   <p>Remplis le formulaire pour t’inscrire.</p>
 
   <form id="account-registration-form">
@@ -19,38 +35,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <label>Email</label><br>
     <input type="email"><br><br>
 
-    <button>S’inscrire</button>
+    <button type="submit">S’inscrire</button>
   </form>
 
   <p><a href="index.html">Retour à l’accueil</a></p>
-<script>
-  window.dataLayer = window.dataLayer || [];
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("account-registration-form");
-    if (!form) return;
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    form.addEventListener("submit", function (e) {
-      // Empêche le refresh (sinon tu risques de perdre l'event)
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("account-registration-form");
+      if (!form) return;
 
-      // Exemple : méthode d'inscription
-      // Ici on met "email" car ton formulaire est email+nom.
-      // Si tu ajoutes un bouton Google plus tard, on mettra "google".
-      const registrationMethod = "email";
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      window.dataLayer.push({
-        event: "account_registration",
-        form_id: form.id,
-        registration_method: registrationMethod,
-        page_type: "registration"
+        window.dataLayer.push({
+          event: "account_registration",
+          form_id: form.id,
+          registration_method: "email",
+          page_type: "registration"
+        });
       });
-
-      // Si tu veux quand même soumettre le formulaire après (plus tard quand il y aura une vraie action),
-      // tu pourras décommenter ça :
-      // setTimeout(() => form.submit(), 200);
     });
-  });
-</script>
+  </script>
+
 </body>
 </html>
