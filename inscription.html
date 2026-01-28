@@ -10,7 +10,7 @@
 
   <p>Remplis le formulaire pour t’inscrire.</p>
 
-  <form>
+  <form id="account-registration-form">
     <label>Nom</label><br>
     <input type="text"><br><br>
 
@@ -21,6 +21,34 @@
   </form>
 
   <p><a href="index.html">Retour à l’accueil</a></p>
+<script>
+  window.dataLayer = window.dataLayer || [];
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("account-registration-form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      // Empêche le refresh (sinon tu risques de perdre l'event)
+      e.preventDefault();
+
+      // Exemple : méthode d'inscription
+      // Ici on met "email" car ton formulaire est email+nom.
+      // Si tu ajoutes un bouton Google plus tard, on mettra "google".
+      const registrationMethod = "email";
+
+      window.dataLayer.push({
+        event: "account_registration",
+        form_id: form.id,
+        registration_method: registrationMethod,
+        page_type: "registration"
+      });
+
+      // Si tu veux quand même soumettre le formulaire après (plus tard quand il y aura une vraie action),
+      // tu pourras décommenter ça :
+      // setTimeout(() => form.submit(), 200);
+    });
+  });
+</script>
 </body>
 </html>
